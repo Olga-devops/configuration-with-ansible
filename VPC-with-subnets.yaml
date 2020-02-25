@@ -27,18 +27,18 @@
       register: private_subnet
     
      - name: Create private subnet 2
-      ec2_vpc_subnet:
-        state: present
-        region: us-west-2
-        az: us-west-2b
-        vpc_id:  "{{vpc_info_info.vpcs[0].vpc_id}}"
-        cidr: 10.10.2.0/24
-        resource_tags:
-          Name: Private Subnet
-      register: private_subnet 
+       ec2_vpc_subnet:
+         state: present
+         region: us-west-2
+         az: us-west-2b
+         vpc_id:  "{{vpc_info_info.vpcs[0].vpc_id}}"
+         cidr: 10.10.2.0/24
+         resource_tags:
+           Name: Private Subnet
+       register: private_subnet 
      
      - name: Create private subnet 3
-      ec2_vpc_subnet:
+       ec2_vpc_subnet:
         state: present
         region: us-west-2
         az: us-west-2c
@@ -56,28 +56,28 @@
         vpc_id:  "{{vpc_info_info.vpcs[0].vpc_id}}"
         cidr: 10.10.11.0/24
         resource_tags:
-          Name: Public Subnet
+          Name: Public Subnet 1
       register: public_subnet 
      
       - name: Create public subnet 2
+        ec2_vpc_subnet:
+          state: present
+          region: us-west-2
+          az: us-west-2b
+          vpc_id:  "{{vpc_info_info.vpcs[0].vpc_id}}"
+          cidr: 10.10.12.0/24
+          resource_tags:
+            Name: Public Subnet 2
+        register: public_subnet  
+    
+     - name: Create public subnet 3
        ec2_vpc_subnet:
          state: present
          region: us-west-2
-         az: us-west-2b
+         az: us-west-2c
          vpc_id:  "{{vpc_info_info.vpcs[0].vpc_id}}"
-         cidr: 10.10.12.0/24
+         cidr: 10.10.13.0/24
          resource_tags:
-          Name: Public Subnet
-      register: public_subnet  
-    
-     - name: Create public subnet 3
-      ec2_vpc_subnet:
-        state: present
-        region: us-west-2
-        az: us-west-2c
-        vpc_id:  "{{vpc_info_info.vpcs[0].vpc_id}}"
-        cidr: 10.10.13.0/24
-        resource_tags:
-          Name: Public Subnet
-      register: public_subnet  
+           Name: Public Subnet 3
+       register: public_subnet  
       

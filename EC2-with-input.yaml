@@ -1,0 +1,15 @@
+---
+- name: EC-2 Playbook
+  hosts: all
+  become: true
+  become_method: sudo
+  connection: ssh
+  ignore_errors: false
+  tasks:
+    - name: take input
+      instance type:  
+        name: "{{instance type}}"
+    - name: take input
+      region: 
+        name: "{{region}}"
+      
