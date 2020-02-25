@@ -6,9 +6,9 @@
   tasks:
     - name: Create a security group
       ec2_group:
-        name: “{{ sg_name }}”
+        name: "{{ sg_name }}"
         description: ansible security group
-        region: “{{ region }}”
+        region: "{{ region }}"
         rules:
           - proto: tcp
             from_port: 22
