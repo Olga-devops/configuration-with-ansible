@@ -1,0 +1,15 @@
+    - name: security group rule descriptions
+      ec2_group:
+        name: ssh http https and tcp open
+        description: sg with rule descriptions
+        vpc_id: vpc-
+        region: us-west-2
+        rules:
+          - proto: tcp
+            ports:
+              - 80
+              - 22
+              - 443
+              - 1163
+            cidr_ip: 10.0.0.0/16
+            rule_desc: allow all on port 80 and 443

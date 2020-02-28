@@ -5,6 +5,6 @@
   become_method: sudo
   connection: ssh
   ignore_errors: false
-  roles: 
-    - {role: company_prerequsites}
-    - {role: wordpress}
+  tasks: 
+    - name: Task Name Here
+      ping: 
