@@ -1,0 +1,13 @@
+- name: Collect VPC info
+  c2_vpc_net_facts:
+  region: "{{region}}"
+  filters:
+    "tag:Task": VPC
+register: VPC1
+
+- name: create IGW 
+  ec2_vpc_igw:
+  region: "{{region}}"
+  vpc_id: "{{VPC1.vpcs[0].vpc_id}}"
+  state: present
+register: igw
