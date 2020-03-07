@@ -1,4 +1,5 @@
-- name: allocate a new elastic IP without associating it to anything
+- name: allocate a new elastic IP with IGW
   ec2_eip:
-    state: present
+    region: us-west-1
+    in_vpc: yes
   register: eip
