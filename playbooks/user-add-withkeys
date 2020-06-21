@@ -1,0 +1,28 @@
+---
+- name : adding keys from local to remote system
+  hosts: all
+  become: yes
+  become_method: sudo
+  vars:
+    list_of_members:
+    - centos
+    - name1
+    - name2
+    - name3
+  tasks: 
+    - name: creating list of users on remote system
+      user:
+        name: "{{ item }}"
+        comment: member {{ item }}
+        state: present
+        createhome: yes
+      with_items: 
+        "{{ list_of_members }}"
+    - name: SYSTEM - Set authorized key for test-user took from file
+      tags: system-user
+      authorized_keys:
+        user: "{{ item }}"
+        state: present
+        keys: "{{ lookup('file', '/home/{{item}}/.ssh/id_rsa.pub') }}"
+      with
+        "{{ list_of_members }}"
